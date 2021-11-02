@@ -1,14 +1,10 @@
-let router = require('express').Router();
+const router = require('express').Router();
+
 const {
-  getInfo,
-  // downloadSong
+  getInfo
 } = require('../controllers');
 
-// router.get('/', (req, res) => {
-//   res.status(200).json('Hello World');
-// });
-//
+// @prefix /api
 router.get('/info', getInfo);
-// router.post('/download', downloadSong);
-//
+
 module.exports = router;

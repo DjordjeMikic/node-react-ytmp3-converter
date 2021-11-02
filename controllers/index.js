@@ -1,21 +1,28 @@
-let ytdl = require('ytdl-core');
-// let fs = require('fs');
-// const url = 'https://www.youtube.com/watch?v=xKzzZEiyfug';
+const ytdl = require('ytdl-core');
 
 const getInfo = async (req, res) => {
-  let url = req.query.url;
-  let info = await ytdl.getInfo(url);
-  let format = ytdl.filterFormats(info.formats, 'audioonly');
-  let audioTracker = { downloaded: 0, total: Infinity }
-  const audio = ytdl(url, { quality: 'highestaudio' })
-    .on('progress', (_, downloaded, total) => {
-      audioTracker = { downloaded, total };
+  try {
+    const url = req.query.url;
+    const info = await ytdl.getInfo(url);
+    let format = ytdl.filterFormats(info.formats, 'audioonly');
+    let audioTracker = { downloaded: 0, total: Infinity };
+    let io = req.app.settings.socketio;
 
-      console.log(downloaded);
-    });
+    if(info?.videoDetails?.title) {
+      io.emit('song-name', info.videoDetails.title);
+    }
 
-  audio.pipe(res);
-  // res.status(200).json(req.query.url);
+    console.log(info.videoDetails.title);
+    const audio = ytdl(url, { quality: 'highestaudio' })
+      .on('progress', (_, downloaded, total) => {
+        // audioTracker = { downloaded, total };
+        io.emit('converting', { downloaded, total });
+      })
+
+    audio.pipe(res);
+  } catch(e) {
+    res.status(400).json(e);
+  }
 }
 
 module.exports = {
