@@ -9,6 +9,7 @@
     "client": "npm start --prefix front-end",
     "complete": "npm install --prefix front-end && npm install",
     "buildcl": "npm run build --prefix front-end",
+    "heroku-postbuild": "cd front-end && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Djordje Mikic",
