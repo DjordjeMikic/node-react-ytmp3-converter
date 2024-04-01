@@ -1,29 +1,88 @@
 # Simple Yt to mp3 converter in node and react
+
 ### The application is made for training purposes, not for copyright infringement. If the application is misused, I do not bear any responsibility.
 
+App has option to convert yt video to mp4 (video) or mp3 (audio) format
+
 #### Installation
-```console
-user$ git clone https://github.com/DjordjeMikic/node-react-ytmp3-converter.git
-user$ cd clonedDirectory
-user/clonedDirectory$ npm run complete
+```bash
+git clone <REPO_URL>
+cd <REPO_URL>
 ```
 
-#### For development usage
-Set in front-end/socket.js HOST variable on line 4
-```javascript
-export const HOST = 'http://localhost:8000'; //Or some other url and port
-```
-And run it with command
-```console
-user/clonedDirectory$ npm run dev
+#### Install dependencies
+In the root of the app
+
+npm:
+```bash
+npm install
 ```
 
-#### For production usage
-Set in front-end/socket.js if you touched it already to '' then build front-end with command from root of repository
-```console
-user/clonedDirectory$ npm run buildcl
+yarn:
+```bash
+yarn
 ```
-And run it with
-```console
-user/clonedDirectory$ npm start
+For next speps we will user only yarn commands form npm there is command prefix run.
+
+#### Start in development mode
+
+Client:
+```bash
+yarn dev:client
+```
+
+Server:
+```bash
+yarn dev:server
+```
+
+#### Build
+
+Client:
+```bash
+yarn build:client
+```
+
+Server:
+```bash
+yarn build:server
+```
+
+#### Start production mode
+
+First you must build the application, described in previous instruction
+
+Client:
+```bash
+yarn start:client
+```
+
+Server:
+```bash
+yarn start:server
+```
+
+#### Lint
+
+Client:
+```bash
+yarn lint:client
+```
+
+Server:
+```bash
+yarn lint:server
+```
+
+#### Format
+Fix files with prettier
+
+Client:
+```bash
+yarn format:client
+```
+
+Server:
+```bash
+yarn format:server
 ```
