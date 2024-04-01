@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "private": true,
   "scripts": {
     "start": "node server.js",
     "dev:client": "lerna run --scope client --stream dev",
@@ -33,5 +34,8 @@
     "lerna": "^6.4.1",
     "nodemon": "^2.0.14",
     "prettier": "^3.2.5"
-  }
+  },
+  "workspaces": [
+    "./packages/*"
+  ]
 }
