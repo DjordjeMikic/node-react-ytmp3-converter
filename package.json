@@ -5,12 +5,16 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix front-end",
-    "complete": "npm install --prefix front-end && npm install",
-    "buildcl": "npm run build --prefix front-end",
-    "heroku-postbuild": "cd front-end && npm install && npm run build",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev:client": "lerna run --scope client --stream dev",
+    "dev:server": "lerna run --scope server --stream dev",
+    "build:client": "lerna run --scope client --stream build",
+    "build:server": "lerna run --scope server --stream build",
+    "start:client": "lerna run --scope client --stream preview",
+    "start:server": "lerna run --scope server --stream start",
+    "lint:client": "lerna run --scope client --stream lint",
+    "lint:server": "lerna run --scope server --stream lint",
+    "format:client": "lerna run --scope client --stream format",
+    "format:server": "lerna run --scope server --stream format"
   },
   "author": "Djordje Mikic",
   "license": "ISC",
@@ -26,6 +30,8 @@
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
-    "nodemon": "^2.0.14"
+    "lerna": "^6.4.1",
+    "nodemon": "^2.0.14",
+    "prettier": "^3.2.5"
   }
 }
